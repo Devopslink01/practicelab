@@ -5,6 +5,8 @@ node –version
 sudo apt install npm 
 npm --version
 
+npm install cucumber --save-dev 
+
 module.exports = {
   default: `--format-options '{"snippetInterface": "synchronous"}'`
 }
