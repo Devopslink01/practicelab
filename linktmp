@@ -56,7 +56,19 @@ sudo systemctl restart tomcat8
 
 sudo systemctl status tomcat8
 
-#http://public_dns_name:9090
 
-127.0.0.1 your.host.name
-/etc/hosts
+sudo apt-get remove tomcat8
+This will remove just the tomcat8 package itself.
+
+Uninstall tomcat8 and its dependencies
+sudo apt-get remove --auto-remove tomcat8
+This will remove the tomcat8 package and any other dependant packages which are no longer needed.
+
+Purging your config/data too
+If you also want to delete your local/config files for tomcat8 then this will work.
+
+ Caution! Purged config/data can not be restored by reinstalling the package.
+sudo apt-get purge tomcat8
+Or similarly, like this tomcat8
+
+sudo apt-get purge --auto-remove tomcat8
