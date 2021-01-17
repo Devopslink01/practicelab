@@ -57,3 +57,6 @@ sudo systemctl restart tomcat8
 sudo systemctl status tomcat8
 
 #http://public_dns_name:9090
+
+127.0.0.1 your.host.name
+/etc/hosts
