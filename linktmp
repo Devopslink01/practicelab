@@ -19,3 +19,5 @@ const { Given, When, Then } = require('cucumber');
 dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
 
 git clone https://github.com/Devopslink01/myMaven-webrepo.git
+
+/var/lib/jenkins/workspace/mavenweb_CI_pipeline/target/myMaven-web.war
