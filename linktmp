@@ -17,3 +17,5 @@ const { Given, When, Then } = require('cucumber');
 “test” : “cucumber-js” 
 
 dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
+
+git clone https://github.com/Devopslink01/myMaven-webrepo.git
