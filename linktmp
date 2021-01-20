@@ -18,3 +18,4 @@ const { Given, When, Then } = require('cucumber');
 
 
 sudo snap install intellij-idea-community --classic
+intellij-idea-community
