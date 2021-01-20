@@ -15,3 +15,6 @@ const assert = require('assert');
 const { Given, When, Then } = require('cucumber');
 
 “test” : “cucumber-js” 
+
+
+sudo snap install intellij-idea-community --classic
