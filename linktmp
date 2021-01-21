@@ -26,31 +26,16 @@ fun main(args: Array<String>){
 
 sudo snap install --classic kotlin
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+fun printProduct(arg1: String, arg2: String) {
+    val x = parseInt(arg1)
+    val y = parseInt(arg2)
 
-class AppTest {
-    @Test
-    fun thingsShouldWork() {
-        assertEquals(listOf(1,2,3).reversed(), listOf(3,2,1))
+    // Using `x * y` yields error because they may hold nulls.
+    if (x != null && y != null) {
+        // x and y are automatically cast to non-nullable after null check
+        println(x * y)
     }
-
-    @Test
-    fun thingsShouldBreak() {
-        assertEquals(listOf(1,2,3).reversed(), listOf(1,2,3))
-    }
-}
-
-public class b5_nestedloops {
-
-  public static void main(String[] args) {
-
-    for (int x = 1; x <= 10; x++) {
-      for (int y = 1; y <= 10; y++) {
-        System.out.printf("%4d", x * y);
-      }
-      System.out.println();
-    }
-
-  }
+    else {
+        println("'$arg1' or '$arg2' is not a number")
+    }    
 }
