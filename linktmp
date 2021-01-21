@@ -23,3 +23,5 @@ intellij-idea-community
 fun main(args: Array<String>){  
     println("test")
 }
+
+sudo snap install --classic kotlin
