@@ -33,6 +33,12 @@ docker run --rm --net puppet --link=puppetserver:puppet puppet/puppet-agent-alpi
 #----Gobackto original terminal window: to find out which packages puppet is managing----#
 docker run --rm --net puppet --link=puppetserver:puppet puppet/puppet-agent-alpine resource package
 #a list pf packages that puppet provides is displayed
+--------------------
+sudo chown $USER:docker ~/.docker
+sudo chown $USER:docker ~/.docker/config.json
+sudo chmod g+rw ~/.docker/config.json
+
+and for sure $USER is ur username! :D
 
 #--Demonstrate clean up: remove puppetserver from operations
 docker rm -f puppetserver
