@@ -1,41 +1,39 @@
-sudo apt-get update
-sudo apt-get install nodejs
-node –version
+docker --version
 
-sudo apt install npm 
-npm --version
+docker network create puppet
 
-npm install cucumber --save-dev 
+docker network ls
+#list docker network in the environment
 
-module.exports = {
-  default: `--format-options '{"snippetInterface": "synchronous"}'`
-}
+docker pull puppet/puppetserver-standalone
+#downloads the puppet docker image from the internet to the local machine
 
-const assert = require('assert');
-const { Given, When, Then } = require('cucumber');
+docker pull puppet/puppet-agent-alpine
+#pull puppet agent container image
 
-“test” : “cucumber-js” 
+docker images
+#check to see all the images have been properly downloaded
 
+docker run --net puppet -d --name puppetserver --hostname puppet puppet/puppetserver-standalone
+#spin up the puppet server container using the puppetserver-standalone image.
+#--will spin up the puppet server container agains the docker network instance puppet
 
-sudo snap install intellij-idea-community --classic
-intellij-idea-community
+docker ps
+#to confirm that the puppetserver container is indeed running
 
-fun main(args: Array<String>){  
-    println("test")
-}
+docker logs puppetserver
+#inspect the log files that the container generates
 
-sudo snap install --classic kotlin
+#----Open Additinal terminal window- to run puppet agent----#
 
-fun printProduct(arg1: String, arg2: String) {
-    val x = parseInt(arg1)
-    val y = parseInt(arg2)
+docker run --rm --net puppet --link=puppetserver:puppet puppet/puppet-agent-alpine
+#starts the puppet agent underneath the puppet network we configured earlier
+#**NOTICE: the puppet agent container performs a certificate exchange
 
-    // Using `x * y` yields error because they may hold nulls.
-    if (x != null && y != null) {
-        // x and y are automatically cast to non-nullable after null check
-        println(x * y)
-    }
-    else {
-        println("'$arg1' or '$arg2' is not a number")
-    }    
-}
+#----Gobackto original terminal window: to find out which packages puppet is managing----#
+docker run --rm --net puppet --link=puppetserver:puppet puppet/puppet-agent-alpine resource package
+#a list pf packages that puppet provides is displayed
+
+#--Demonstrate clean up: remove puppetserver from operations
+docker rm -f puppetserver
+#this command instructs docker to remove the container from memory
